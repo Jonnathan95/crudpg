@@ -1,9 +1,8 @@
 <?php
     // Incluyendo conexion a DB
-    require '/model/database.php';
-
+    require 'model/database.php';
     // llamando al controlador empleado para panel de inicio
-    $controller = 'empleado';
+    $controller = 'sensor';
     if (!isset($_REQUEST['c'])) {
         require_once "controller/$controller.controller.php";
         $controller = ucwords($controller) . 'Controller';

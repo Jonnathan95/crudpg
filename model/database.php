@@ -13,9 +13,9 @@ class Database
     {
         $host = 'localhost';
         $port = '5432';
-        $db = 'crudpg';
+        $db = 'sensor_fuego';
         $user = 'postgres';
-        $pass = 'jc$95';
+        $pass = 'develop$2018';
 
         $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", "$user", "$pass");
         //$db = new PDO("pgsql:dbname=$db;host=$host", $user, $pass);
