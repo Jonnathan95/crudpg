@@ -12,7 +12,8 @@ class SensorController
 
     public function index()
     {
-        return $this->model->Listar();
+        require_once 'view/header.php';
+        $data = $this->model->Listar();
     }
 
     # Ejemplo de acceso   192.168.1.13/?c=sensor&a=Guardar&lectura=1995

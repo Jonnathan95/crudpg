@@ -1,61 +1,174 @@
 <!DOCTYPE html>
-<html lang="es">
-	<head>
-		<title>Crud PG</title>
+<html lang="en">
 
-	    <meta charset="utf-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-	    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
-	    <link rel="stylesheet" href="assets/js/jquery-ui/jquery-ui.min.css" />
-	    <link rel="stylesheet" href="assets/css/style.css" />
-	    <link rel="stylesheet" href="assets/css/demo.css">
-		<link rel="stylesheet" href="assets/css/footer-distributed.css">
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Graficas</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    <link href="assets/css/toolkit-inverse.css" rel="stylesheet">
+    <link href="assets/css/application.css" rel="stylesheet">
 
-		<link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
-	</head>
-    <body>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Crud pg</a>
-				</div>
-					<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php">Home</a></li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							Empleado
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="?c=empleado&a=Nuevo">Ingreso</a></li>
-							<li><a href="?c=empleado&a=Buscar">Buscar</a></li>
-							<li><a href="?c=empleado&a=AsignaSueldo">Asignar Sueldo</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							Sueldo
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Ingreso</a></li>
-							<li><a href="#">Buscar</a></li>
-							<li><a href="#">Pendiente</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Page 3</a></li>
-				</ul>
-			</div>
-		</nav>
-		<?php if (isset($_REQUEST['message'])) : ?>
-			<?php $tipo = ($_REQUEST['titulo'] == 'exito') ? 'success' : 'danger'; ?>
-			<div class="alert alert-<?php echo $tipo; ?> fade in">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong><?php echo $_REQUEST['titulo']; ?>!</strong> <?php echo $_REQUEST['message']; ?>
-			</div>
-		<?php endif; ?>
-    <div class="container">
+    <style>
+        /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+        /* this chunk of css is not part of the toolkit :) */
+        
+        body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bw">
+        <div class="dh">
+            <div class="et brf">
+                <div class="bqn">
+                    <div class="bqo">
+                        <h6 class="bqq">Dashboards</h6>
+                        <h2 class="bqp">Visión general</h2>
+                    </div>
+                    <div class="on bqr">
+                        <div class="axm bpy">
+                            <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+                        </div>
+                    </div>
+                </div>
+                <hr class="aez">
+                <div class="dh avv afn">
+                    <div class="eo afk amd">
+                        <div class="ayq ahn">
+                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']">
+                            </canvas>
+                        </div>
+                        <strong class="awy">Traffic</strong>
+                        <h4>Altos vs Bajos</h4>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpn">
+                            <div class="ago">
+                                <span class="bpi">Page views</span>
+                                <h2 class="bph">1,293
+                                  <small class="bpj bpk">5%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
+                            </canvas>
+                        </div>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpn">
+                            <div class="ago">
+                                <span class="bpi">Page views</span>
+                                <h2 class="bph">1,293
+                                  <small class="bpj bpk">5%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
+                            </canvas>
+                        </div>
+                    </div>
+                    
+
+                    
+                    <!--<div class="eo afk amd">
+                        <div class="ayq ahn">
+                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[330,30]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']">
+                            </canvas>
+                        </div>
+                        <strong class="awy">Revenue</strong>
+                        <h4>New vs Recurring</h4>
+                    </div>
+                    <div class="eo afk amd">
+                        <div class="ayq ahn">
+                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                            </canvas>
+                        </div>
+                        <strong class="awy">Traffic</strong>
+                        <h4>Direct vs Referrals</h4>
+                    </div> !-->
+                </div>
+
+                <!--<div class="bpu afn afd">
+                    <h3 class="bpv bpw">Quick stats</h3>
+                </div>
+
+                <div class="dh brg">
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpn">
+                            <div class="ago">
+                                <span class="bpi">Page views</span>
+                                <h2 class="bph">1,293
+                                  <small class="bpj bpk">5%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
+                            </canvas>
+                        </div>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpq">
+                            <div class="ago">
+                                <span class="bpi">Downloads</span>
+                                <h2 class="bph">758
+                                    <small class="bpj bpl">1.3%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[4,34,64,27,96,50,80]]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpo">
+                            <div class="ago">
+                                <span class="bpi">Sign-ups</span>
+                                <h2 class="bph"> 1,293
+                                    <small class="bpj bpk">6.75%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[12,38,32,60,36,54,68]]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpp">
+                            <div class="ago">
+                                <span class="bpi">Downloads</span>
+                                <h2 class="bph">758
+                                    <small class="bpj bpl">1.3%</small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                        </div>
+                    </div>
+                </div>!-->
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/tablesorter.min.js"></script>
+    <script src="assets/js/toolkit.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script>
+        // execute/clear BS loaders for docs
+        $(function() {
+            while (window.BS && window.BS.loader && window.BS.loader.length) {
+                (window.BS.loader.pop())()
+            }
+        })
+    </script>
+</body>
+
+</html>
