@@ -12,8 +12,18 @@ class SensorController
 
     public function index()
     {
-        require_once 'view/header.php';
+        $fecha = null;
+        if (isset($_REQUEST['calendario']) or !is_null($_REQUEST['calendario'])) {
+            $date = new DateTime($_REQUEST['calendario']);
+            $fecha = $date->format('Y-m-d');
+        }
+
         $data = $this->model->Listar();
+        $lecturas = $this->model->LecturasFecha($fecha);
+        $lecturaMes = $this->model->LecturasMes($fecha);
+        $detalleFecha = $this->model->DetalleLecturasFecha($fecha);
+        $detalleMes = $this->model->DetalleLecturaMes($fecha);
+        require_once 'view/header.php';
     }
 
     # Ejemplo de acceso   192.168.1.13/?c=sensor&a=Guardar&lectura=1995
@@ -25,5 +35,15 @@ class SensorController
 
         unset($data['c'], $data['a']);
         $resultado = $this->model->Registrar($data);
+    }
+
+    public function test()
+    {
+        $data = $this->model->LecturasFecha();
+
+
+        echo "</pre>";
+        var_dump($_REQUEST['lectura']);
+        echo "</pre>";
     }
 }

@@ -36,7 +36,12 @@
                     </div>
                     <div class="on bqr">
                         <div class="axm bpy">
-                            <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+                        <?php
+                            $date = date('d/m/Y', (time() - (1 * 24 * 60 * 60)));
+                        ?>
+                            <form id="frm-fecha" action="?c=sensor&a=index" method="get">
+                                <input type="text" id="calendario" name="calendario" value="<?php echo $date ?>" class="form-control" data-provide="datepicker">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -44,57 +49,51 @@
                 <div class="dh avv afn">
                     <div class="eo afk amd">
                         <div class="ayq ahn">
-                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']">
+                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[<?php echo $detalleFecha['menor'] ?>, <?php echo $detalleFecha['mayor'] ?>]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Menores', 'Altos']">
                             </canvas>
                         </div>
-                        <strong class="awy">Traffic</strong>
+                        <strong class="awy">Lecturas del Día</strong>
                         <h4>Altos vs Bajos</h4>
-                    </div>
-                    <div class="eq fp afd amk asi">
-                        <div class="brh bpn">
-                            <div class="ago">
-                                <span class="bpi">Page views</span>
-                                <h2 class="bph">1,293
-                                  <small class="bpj bpk">5%</small>
-                                </h2>
-                                <hr class="bpr aei">
-                            </div>
-                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
-                            </canvas>
-                        </div>
-                    </div>
-                    <div class="eq fp afd amk asi">
-                        <div class="brh bpn">
-                            <div class="ago">
-                                <span class="bpi">Page views</span>
-                                <h2 class="bph">1,293
-                                  <small class="bpj bpk">5%</small>
-                                </h2>
-                                <hr class="bpr aei">
-                            </div>
-                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
-                            </canvas>
-                        </div>
-                    </div>
-                    
-
-                    
-                    <!--<div class="eo afk amd">
-                        <div class="ayq ahn">
-                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[330,30]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']">
-                            </canvas>
-                        </div>
-                        <strong class="awy">Revenue</strong>
-                        <h4>New vs Recurring</h4>
                     </div>
                     <div class="eo afk amd">
                         <div class="ayq ahn">
-                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                            <canvas class="bps" width="200" height="200" data-chart="doughnut" data-dataset="[<?php echo $detalleMes['menor'] ?>, <?php echo $detalleMes['mayor'] ?>]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Menores', 'Altos']">
                             </canvas>
                         </div>
-                        <strong class="awy">Traffic</strong>
-                        <h4>Direct vs Referrals</h4>
-                    </div> !-->
+                        <strong class="awy">Lecturas del Mes</strong>
+                        <h4>Altos vs Bajos</h4>
+                    </div>
+                </div>
+                <div class="bpu afn afd">
+                    <h3 class="bpv bpw">Estadísticas rápidas</h3>
+                </div>
+                <div class="dh brg">
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpn">
+                            <div class="ago">
+                                <span class="bpi">Lecturas del dia</span>
+                                <h2 class="bph"> <?php echo  $lecturas['lecturas'] ?>
+                                    <small class="bpj bpk"> <?php echo $lecturas['promedio'] ?> </small>
+                                </h2>
+                               <hr class="bpr aei">
+                           </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
+                            </canvas>
+                        </div>
+                    </div>
+                    <div class="eq fp afd amk asi">
+                        <div class="brh bpn">
+                            <div class="ago">
+                                <span class="bpi">Lecturas del Mes</span>
+                                <h2 class="bph"><?php echo  $lecturaMes['lecturas'] ?>
+                                    <small class="bpj bpk"><?php echo  $lecturaMes['promedio'] ?></small>
+                                </h2>
+                                <hr class="bpr aei">
+                            </div>
+                            <canvas id="sparkline1" width="378" height="94" class="bri" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;">
+                            </canvas>
+                        </div>
+                    </div>
                 </div>
 
                 <!--<div class="bpu afn afd">
@@ -167,7 +166,27 @@
             while (window.BS && window.BS.loader && window.BS.loader.length) {
                 (window.BS.loader.pop())()
             }
-        })
+        });
+
+
+
+        $( document ).ready(function() {
+
+            $('#calendario').datepicker({
+
+            }).on('changeDate', function(e){
+                $( "#frm-fecha" ).submit();
+                /*$.ajax({
+                    url: '?c=sensor&a=test&lectura=11',
+                    success: function(respuesta) {
+                        console.log(respuesta);
+                    },
+                    error: function() {
+                        console.log("No se ha podido obtener la información");
+                    }
+                });*/
+            });
+        });
     </script>
 </body>
 
